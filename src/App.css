@@ -1,3 +1,9 @@
 @import "tailwindcss";
 @import "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
+
+@layer base {
+  strong {
+    @apply text-green-500 dark:text-sky-500 font-bold;
+  }
+}
