@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { PortraitCard, ParagraphCard } from './components/Cards'
-import { ProfileSidebar } from './components/Sidebar'
 import { VerticalTimeline } from './components/Timeline'
+import { AnchorLink } from './components/Text'
+
+import itnsLogo from './assets/logos/itnetworks-logo.png';
 import './App.css'
 
 function App() {
@@ -40,23 +42,27 @@ function App() {
               { 
                 date: "Enero 2025 - Actualmente", 
                 job: "Desarrollador Fullstack Jr.", 
-                logo: "https://logo.clearbit.com/accenture.com",
+                logo: itnsLogo,
                 company: "ITNetworks México", 
                 description: <div>
-                  Formo parte de un equipo encargado de crear y mantener aplicaciones web para diversos clientes. Entre el giro de estos clientes
+                  Formo parte de un equipo encargado de crear y mantener diferentes aplicaciones web para diversos clientes. Entre el giro de estos clientes
                   se destacan sectores como el <strong>financiero</strong>, <strong>tecnológico</strong> y de
                   <strong> entretenimiento</strong>. Mi rol abarca desde la <strong>administración de bases de datos</strong>, 
                   <strong> desarrollo 
                   backend y frontend</strong>, testeo de código/APIs, despliegue de aplicaciones y manejo de control de versiones con Git.
                 </div>,
                 contributions: [
+                  <div>Desarrollo de la <AnchorLink href="https://web.itsales.mx">versión web</AnchorLink> del ERP de escritorio 
+                  <AnchorLink href='https://itnetworks.mx/servicios/ITSales' target='_blank'> ITSales</AnchorLink> con Node.js, Express, React y Tailwind.</div>,
+                  <div>Implementación de principios <strong>Clean Code</strong> como "Don't Repeat Yourself" (DRY) en componentes Laravel y React, así como en funciones de backend, logrando reducir el tiempo de implementación de nuevas funcionalidades en un 30%.</div>,
+                  <div>Reducción del 70% de tiempos de respuesta de consultas SQL de datos masivos al refactorizar las queries y crear índices estratégicos.</div>
                 ],
-                tools: ["Laravel", "React", "Astro", "Node.js", "Express.js", "PHP", "JavaScript", "SQL Server", "Tailwind", "Flowbite", "Git", "GitHub", "Kanban", "Trello"]
+                tools: ["Laravel", "React", "Node.js", "Express.js", "Microservicios", "JWT", "PHP", "JavaScript", "SQL Server", "Tailwind", "Flowbite", "Git", "GitHub", "Kanban", "Trello"]
               },
               { 
                 date: "Junio 2024 - Diciembre 2024", 
                 job: "Practicante en Desarrollo Fullstack",
-                logo: "https://logo.clearbit.com/accenture.com",
+                logo: itnsLogo,
                 company: "ITNetworks México", 
                 description: <div>
                   Durante esta etapa colaboré en el <strong>desarrollo de un ERP para una financiera</strong> llamada CreditFactor.
@@ -65,24 +71,15 @@ function App() {
                 contributions: [
                   <div>
                     Desarrollo del módulo de facturación electrónica ante el SAT utilizando la librería
-                    <a className="text-blue-600 hover:text-blue-500 ml-1 dark:text-blue-400" target="_blank" 
-                    href="https://multifacturas.com">
-                    Multifacturas</a>.
+                    <AnchorLink href="https://multifacturas.com"> Multifacturas</AnchorLink>.
                   </div>,
                   <div>
                     Desarrollo del módulo de mensajería WhatsApp utlizando la librería
-                    <a className="text-blue-600 hover:text-blue-500 ml-1 dark:text-blue-400" target="_blank"
-                    href="https://waapi.app">
-                    WaAPI</a>.
+                    <AnchorLink href="https://waapi.app"> WaAPI</AnchorLink>.
                   </div>
                 ],
                 tools: ["Laravel", "PHP", "JavaScript", "SQL Server", "Bootstrap", "HTML", "CSS"]
-              },
-              { 
-                date: "April 2022", 
-                title: "API Integration", 
-                description: "Integrated third-party APIs to enhance application functionality and data retrieval." 
-              },
+              }
             ]}
           ></VerticalTimeline>
         </div>

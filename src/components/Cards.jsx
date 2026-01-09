@@ -3,6 +3,27 @@ import { motion } from "framer-motion";
 import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 import { FaSquareYoutube } from "react-icons/fa6";
 
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/miguel-angel-ruiz-lopez",
+    icon: <FaLinkedin size="2em" />,
+    hoverBg: "hover:bg-sky-700",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/MiguelRuizL",
+    icon: <FaGithubSquare size="2em" />,
+    hoverBg: "hover:bg-gray-900",
+  },
+  {
+    name: "YouTube",
+    href: "https://youtube.com/@stinglish7663?si=C_75Dqoh6vWI1e8H",
+    icon: <FaSquareYoutube size="2em" />,
+    hoverBg: "hover:bg-red-700",
+  },
+];
+
 function BaseCard({ title = "", subtitle = "", children, className = "" }) {
     // Variantes base para la tarjeta y los títulos
     const baseVariants = {
@@ -137,41 +158,24 @@ function PortraitCard() {
             className="mt-6 flex space-x-3"
             variants={buttonContainerVariants}
         >
-          <motion.a
-            variants={buttonVariants}
-            href="https://www.linkedin.com/in/miguel-angel-ruiz-lopez"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center p-1 rounded-lg border bg-green-100 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 hover:bg-sky-700 dark:text-sky-300 hover:text-white text-sm font-bold"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaLinkedin size="2em" />
-          </motion.a>
-
-          <motion.a
-            variants={buttonVariants}
-            href="https://github.com/MiguelRuizL"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center p-1 rounded-lg border bg-green-100 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 hover:bg-gray-900 dark:text-sky-300 hover:text-white text-sm font-bold"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaGithubSquare size="2em" />
-          </motion.a>
-
-          <motion.a
-            variants={buttonVariants}
-            href="https://youtube.com/@stinglish7663?si=C_75Dqoh6vWI1e8H"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="focus:outline-none p-1 rounded-lg border bg-green-100 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 hover:bg-red-700 dark:text-sky-300 hover:text-white text-sm font-bold"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaSquareYoutube size="2em" />
-          </motion.a>
+          {socialLinks.map((link) => (
+            <motion.a
+              key={link.name}
+              variants={buttonVariants}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${link.hoverBg} inline-flex items-center p-1 rounded-lg border bg-green-100 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 dark:text-sky-300 hover:text-white text-sm font-bold transition-colors duration-300`}
+              whileHover={{ 
+                  scale: 1.15, 
+                  y: -3,
+              }}
+              whileTap={{ scale: 0.9 }}
+              aria-label={link.name}
+            >
+              {link.icon}
+            </motion.a>
+          ))}
         </motion.div>
       </motion.div>
     </Card>
