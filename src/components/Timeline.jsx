@@ -10,20 +10,20 @@ import {
 } from "flowbite-react";
 import { HiCalendar } from "react-icons/hi";
 import { BaseCard } from "./Cards";
+import { GenericBadge } from "./Badges";
 import { motion } from "framer-motion";
 
 function VerticalTimeline({ timelineData = [] }) {
-    // 1. Orquestador del ítem completo
     const timelineItemVariants = {
         hidden: { opacity: 0, x: -30 },
         visible: {
-        opacity: 1,
-        x: 0,
-        transition: { 
-            duration: 0.5, 
-            ease: "easeOut",
-            staggerChildren: 0.15 // Tiempo entre cada elemento interno
-        },
+            opacity: 1,
+            x: 0,
+            transition: { 
+                duration: 0.5, 
+                ease: "easeOut",
+                staggerChildren: 0.15 // Tiempo entre cada elemento interno
+            },
         },
     };
 
@@ -36,16 +36,7 @@ function VerticalTimeline({ timelineData = [] }) {
             transition: { duration: 0.3 } 
         },
     };
-
-    const badgeVariants = {
-        hidden: { opacity: 0, scale: 0.5 },
-        visible: { 
-            opacity: 1, 
-            scale: 1,
-            transition: { type: "spring", stiffness: 300, damping: 15 } 
-        },
-    };
-
+    
     return (
         <BaseCard
             title="Experiencia Laboral"
@@ -102,21 +93,7 @@ function VerticalTimeline({ timelineData = [] }) {
                             variants={childVariants} // Contenedor de badges
                         >
                             {item.tools && item.tools.map((tool, tIndex) => (
-                            <motion.div 
-                                key={tIndex} 
-                                variants={badgeVariants}
-                                whileHover={{ 
-                                    scale: 1.15, 
-                                    y: -3,
-                                    filter: "drop-shadow(0 0 8px rgba(0, 255, 127, 0.4))" 
-                                }}
-                                whileTap={{ scale: 0.9 }}
-                                className="cursor-pointer"
-                            >
-                                <Badge className="px-3 py-1 rounded-full border bg-green-100 hover:bg-green-200 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 dark:hover:bg-sky-700 dark:text-sky-300 dark:hover:text-white text-sm font-bold transition-colors">
-                                {tool}
-                                </Badge>
-                            </motion.div>
+                                <GenericBadge key={tIndex} index={tIndex} text={tool}></GenericBadge>
                             ))}
                         </motion.div>
 

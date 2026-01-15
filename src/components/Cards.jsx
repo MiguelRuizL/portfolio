@@ -1,7 +1,8 @@
-import { Card } from "flowbite-react";
+import { Card, Badge } from "flowbite-react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
+import { FaLinkedin, FaGithubSquare, FaArrowRight } from "react-icons/fa";
 import { FaSquareYoutube } from "react-icons/fa6";
+import { GenericBadge, StatusBadge } from "./Badges";
 
 const socialLinks = [
   {
@@ -24,8 +25,7 @@ const socialLinks = [
   },
 ];
 
-function BaseCard({ title = "", subtitle = "", children, className = "" }) {
-    // Variantes base para la tarjeta y los títulos
+function BaseCard({ title = "", subtitle = "", children, className = "", topRight = null }) {
     const baseVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -50,7 +50,7 @@ function BaseCard({ title = "", subtitle = "", children, className = "" }) {
     };
 
   return (
-    <Card className={`w-full border-none shadow-lg dark:text-white ${className}`}>
+    <Card className={`w-full border-none shadow-lg dark:text-white ${className} pt-0`}>
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -58,19 +58,26 @@ function BaseCard({ title = "", subtitle = "", children, className = "" }) {
         variants={baseVariants}
         className="flex flex-col gap-3"
       >
-        <div className="flex flex-col">
-          <motion.span 
-            variants={titleVariants}
-            className="font-bold text-2xl text-green-500 dark:text-green-400"
-          >
-            {title}
-          </motion.span>
-          <motion.span 
-            variants={titleVariants}
-            className="font-semibold text-xl"
-          >
-            {subtitle}
-          </motion.span>
+        <div className="flex justify-between">
+          <div className="flex flex-col">
+            <motion.span 
+              variants={titleVariants}
+              className="font-bold text-2xl text-green-500 dark:text-green-400"
+            >
+              {title}
+            </motion.span>
+            <motion.span 
+              variants={titleVariants}
+              className="font-semibold text-xl"
+            >
+              {subtitle}
+            </motion.span>
+          </div>
+          {topRight && (
+            <motion.div variants={titleVariants}>
+                {topRight}
+            </motion.div>
+          )}
         </div>
         <div className="flex flex-col gap-3">
           {children}
@@ -212,4 +219,64 @@ function ParagraphCard({ title, subtitle, content }) {
   );
 }
 
-export { BaseCard, PortraitCard, ParagraphCard };
+function ProjectCard({project, className = "", setSelectedData}) {
+  return (
+    <BaseCard 
+      title={project.title}
+      topRight={<StatusBadge status={project.status} color={project.color}/>}
+      className={`bg-linear-to-br 
+        from-white to-gray-50 
+        dark:bg-linear-to-br dark:from-green-800/20 dark:via-gray-900/60 dark:to-green-950/40
+        dark:border-green-500/30 ${className}`}
+    >
+      <motion.div
+        className="border-4 border-x-0 dark:border-green-500 rounded-xl"
+      >
+        <img src={project.image} alt="" className="rounded-xl" />
+      </motion.div>
+      <motion.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 }
+        }}
+        className="text-gray-600 dark:text-white text-sm leading-relaxed"
+      >
+        {project.summary}
+      </motion.div>
+
+      <div className="flex flex-wrap gap-2 mt-2">
+        {project.tools?.slice(0, 9).map((tool, i) => (
+          <GenericBadge key={i} text={tool} />
+        ))}
+        {project.tools?.length > 9 && (
+          <GenericBadge text="..." />
+        )}
+      </div>
+
+      <motion.div 
+        variants={{
+          hidden: { opacity: 0, x: -10 },
+          visible: { opacity: 1, x: 0 }
+        }}
+        className="flex justify-end"
+      >
+        <button 
+          type="button"
+          onClick={() => {
+            setSelectedData(project)
+          }}
+          className="flex items-center justify-end gap-1 text-sm font-medium text-green-600 dark:text-green-400 hover:underline"
+        >
+          Ver detalles <FaArrowRight />
+        </button>
+      </motion.div>
+    </BaseCard>
+  );
+}
+
+export { 
+  BaseCard, 
+  PortraitCard, 
+  ParagraphCard, 
+  ProjectCard 
+};
