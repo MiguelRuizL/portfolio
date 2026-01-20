@@ -1,43 +1,81 @@
 import { useState } from 'react'
-import { PortraitCard, ParagraphCard} from './components/Cards'
+import { PortraitCard, JSONProfileCard, ParagraphCard } from './components/Cards'
 import { VerticalTimeline } from './components/Timeline'
 import { AnchorLink } from './components/Text'
 import ProjectsDisplay from './components/ProjectsDisplay'
+import SkillsDisplay from './components/SkillsDisplay'
 
 
 import itsaleswebLanding from './assets/projects/itsalesweb-landing.png';
 import itnsLogo from './assets/logos/itnetworks-logo.png';
-import './App.css'
-import { HRTrimmed  } from 'flowbite-react'
+import toolsData from './constants/tools';
+import './App.css';
+import { HRTrimmed  } from 'flowbite-react';
 
 function App() {
 
   return (
     <>
       <div className="p-0 sm:p-7 w-full">
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
-          <div className='flex flex-col col-span-1 lg:col-span-2 gap-3 order-2 lg:order-1'>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          <div className="order-1 md:order-2">
+            <PortraitCard />
+          </div>
+
+          <div className="order-2 md:order-1 md:row-span-2 h-full">
+            <JSONProfileCard profileData={
+              {
+                "yo": {
+                  "nombre": "Miguel Ángel Ruiz López",
+                  "ocupacion": "Desarrollador Fullstack Jr.",
+                  "idiomas": ["Español", "Inglés", "Francés", "Alemán"]
+                },
+                "stack_resumen": {
+                  "lenguajes": ["PHP", "Java", "JavaScript"],
+                  "frontend": ["React", "Tailwind"],
+                  "backend": ["Node.js", "Spring Boot"],
+                  "fullstack": ["Laravel"],
+                  "bases_datos": ["SQL Server", "MySQL", "PostgreSQL"],
+                  "devops": ["Git", "Docker"],
+                  "otros": ["Microservicios", "JWT", "REST APIs"]
+                },
+                "experiencia": "1 año",
+                "intereses": {
+                  "videojuegos": ["Dota 2", "Warcraft", "The Legend of Zelda"],
+                  "edicion_videos": ["Sony Vegas Pro", "YouTube"],
+                  "deportes": ["Ciclismo"],
+                  "arte": "Dibujo"
+                }
+              }
+            }/>
+          </div>
+
+          <div className="order-3 md:order-3">
             <ParagraphCard 
               title={"Miguel Ruiz López"} 
               subtitle={"Desarrollador de Software Junior"} 
               content={[
-                <div>
+                <div key="bio">
                   Desarrollador de software fullstack, <strong>especializado en aplicaciones web</strong> y en la <strong>administración de bases de datos</strong>. 
-                  Apasionado por la tecnología y el aprendizaje continuo; me esfuerzo por estar en constante crecimiento
-                  profesional y personal.
+                  Apasionado por la tecnología y el aprendizaje continuo; me esfuerzo por 
+                  estar en constante crecimiento profesional y personal.
                 </div>,
-                <p className=''>
-                  Me gusta convivir con las personas, aprender de sus experiencias y compartir las mías, pues creo que todos tenemos algo valioso
-                  para aportar. Además, me encantan los idiomas y continuamente estoy reforzando mis habilidades en
+                <p key="hobbies">
+                  Además, me encantan los idiomas y continuamente estoy reforzando mis habilidades en
                   <strong> inglés</strong>, <strong>francés</strong> y <strong>alemán</strong>.
                 </p>,
-              ]}>
-            </ParagraphCard>
-          </div>
-          <div className='col-span-1 order-1 lg:order-2'>
-            <PortraitCard></PortraitCard>
+              ]}
+              className='w-full border-none overflow-hidden
+              bg-linear-to-br from-white to-gray-200/60
+              md:bg-linear-to-bl md:from-gray-200/90 md:to-white
+              dark:bg-gray-900 dark:bg-linear-to-r
+              dark:from-green-900/60 dark:to-gray-900
+              md:dark:bg-[radial-gradient(at_bottom_left,var(--color-teal-950)_0%,transparent_70%)]'
+            />
           </div>
         </div>
+
         <div className='my-5'>
           <VerticalTimeline
             timelineData={[
@@ -85,7 +123,7 @@ function App() {
             ]}
           ></VerticalTimeline>
         </div>
-        <HRTrimmed  className='!mb-0'/>
+        <HRTrimmed  className='bg-green-500 dark:bg-cyan-700 !mb-0'/>
         <div>
           <ProjectsDisplay projects={[
             {
@@ -132,11 +170,15 @@ function App() {
               ],
               "tools": [
                 "React", "Tailwind", "Node.js", "Express.js", 
-                "JavaScript", "JWT", "Microservicios", "Git",
-                "SQL Server", "Prisma", "Postman", "JSON"
+                "JavaScript", "JWT", "Microservicios", "SQL Server", "Git",
+                "Flowbite", "Prisma", "Postman", "JSON"
               ],
             }
           ]} />
+        </div>
+        <HRTrimmed  className='bg-green-500 dark:bg-cyan-700 !mb-0'/>
+        <div>
+          <SkillsDisplay tools={toolsData} />
         </div>
       </div>
     </>

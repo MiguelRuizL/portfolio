@@ -15,7 +15,7 @@ export default function ProjectsDisplay({projects = []}) {
             <BaseCard 
                 title="Proyectos" 
                 subtitle='Proyectos en los que he colaborado y desarrollado' 
-                className="bg-white dark:bg-gray-900"
+                className="bg-transparent shadow-none dark:bg-gray-900"
             >
                 <div className='grid grid-cols-1 sm:grid-cols-2'>
                     {projects && projects.map((project, index) => (
