@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { FaLinkedin, FaGithubSquare, FaArrowRight } from "react-icons/fa";
 import { FaSquareYoutube } from "react-icons/fa6";
 import { GenericBadge, StatusBadge } from "./Badges";
+import profilePic from "../assets/profile_picture.png";
 
 const socialLinks = [
   {
@@ -147,16 +148,18 @@ function PortraitCard() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }} // Se activa un poco antes de entrar por completo
       >
-        <motion.img
+        <motion.div
           variants={itemVariants}
-          src="https://m.media-amazon.com/images/M/MV5BYWFkNjg4YTgtZDdkMC00Y2I3LTk4ODEtZWNkYmRkOTZjMWJlXkEyXkFqcGc@._V1_.jpg"
-          alt="Chris Cornell Foto"
-          height="96"
-          width="96"
-          className="mb-3 rounded-full shadow-lg object-cover"
-        />
+          className="mb-3 relative h-24 w-24 rounded-full shadow-lg overflow-hidden"
+        >
+          <img
+            src={profilePic}
+            alt="Me. My Photo"
+            className="absolute h-[130%] w-[130%] max-w-none top-14 left-11.5 -translate-y-1/2 -translate-x-1/2 object-cover"
+          />
+        </motion.div>
         <motion.h5 variants={itemVariants} className="mb-1 text-xl font-bold text-gray-900 dark:text-white">
-          Chris Cornell
+          Miguel Ruiz
         </motion.h5>
         <motion.span variants={itemVariants} className="text-sm text-gray-500 dark:text-gray-400">
           Guanajuato, México

@@ -53,7 +53,7 @@ function App() {
 
           <div className="order-3 md:order-3">
             <ParagraphCard 
-              title={"Miguel Ruiz López"} 
+              title={"Miguel Ruiz"} 
               subtitle={"Desarrollador de Software Junior"} 
               content={[
                 <div key="bio">
