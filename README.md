@@ -1,16 +1,22 @@
-# React + Vite
+Este es mi portafolio personal, diseñado para mostrar mis habilidades y proyectos de desarrollo web actuales.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tecnologías Utilizadas
 
-Currently, two official plugins are available:
+* **Vite + React:** Para un entorno de desarrollo rápido y eficiente.
+* **Tailwind CSS v4:** Estilos modernos utilizando la arquitectura más reciente basada en CSS.
+* **Flowbite React:** Componentes de interfaz de usuario interactivos y accesibles.
+* **Framer Motion:** Animaciones fluidas para mejorar la experiencia de usuario.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características Principales
 
-## React Compiler
+* **Diseño 100% Responsivo:** La interfaz se adapta perfectamente a dispositivos móviles, tablets y escritorio.
+* **Modo Oscuro/Claro:** Implementación de un toggle de tema persistente que respeta las preferencias del sistema y del usuario.
+* **Uso de componentes:** Se implementan varios componentes reutilizables a fin de mantener el código limpio y reutilizable.
+* **Optimización Visual:** Transiciones suaves de color y contenedores de imagen con zoom dinámico.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
+Desarrollado con enfoque en rendimiento y diseño moderno.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+###### Notas
+- Proximamente añadiré vista en inglés y posiblemente otros idiomas.
+- El proyecto es puramente frontend, sin embargo, se está trabajando para implementar backend y base de datos.
