@@ -1,16 +1,23 @@
 import { useState } from 'react'
+import { HRTrimmed  } from 'flowbite-react';
+
 import { PortraitCard, JSONProfileCard, ParagraphCard } from './components/Cards'
 import { VerticalTimeline } from './components/Timeline'
 import { AnchorLink } from './components/Text'
 import ProjectsDisplay from './components/ProjectsDisplay'
 import SkillsDisplay from './components/SkillsDisplay'
+import CoursesDisplay from './components/CoursesDisplay'
 
 
 import itsaleswebLanding from './assets/projects/itsalesweb-landing.png';
 import itnsLogo from './assets/logos/itnetworks-logo.png';
 import toolsData from './constants/tools';
 import './App.css';
-import { HRTrimmed  } from 'flowbite-react';
+
+import fundamentosJava from './assets/pdf/fundamentos_java.pdf';
+import senior2025 from './assets/pdf/metaphorcesenior_java.pdf';
+import middle2024 from './assets/pdf/metaphorcemiddle_java.pdf';
+import junior2023 from './assets/pdf/metaphorcejunior_java.pdf';
 
 function App() {
 
@@ -66,7 +73,7 @@ function App() {
                   <strong> inglés</strong>, <strong>francés</strong> y <strong>alemán</strong>.
                 </p>,
               ]}
-              className='w-full border-none overflow-hidden
+              className='w-full h-full border-none overflow-hidden
               bg-linear-to-br from-white to-gray-200/60
               md:bg-linear-to-bl md:from-gray-200/90 md:to-white
               dark:bg-gray-900 dark:bg-linear-to-r
@@ -92,7 +99,7 @@ function App() {
                   backend y frontend</strong>, testeo de código/APIs, despliegue de aplicaciones y manejo de control de versiones con Git.
                 </div>,
                 contributions: [
-                  <div>Desarrollo de la <AnchorLink href="https://web.itsales.mx">versión web</AnchorLink> con microservicios del ERP de escritorio 
+                  <div>Participación fullstack en el desarrollo de la <AnchorLink href="https://web.itsales.mx">versión web</AnchorLink> con microservicios del ERP de escritorio 
                   <AnchorLink href='https://itnetworks.mx/servicios/ITSales' target='_blank'> ITSales</AnchorLink> con Node.js, Express, React y Tailwind.</div>,
                   <div>Implementación de principios <strong>Clean Code</strong> como "Don't Repeat Yourself" (DRY) en componentes Laravel y React, así como en funciones de backend, logrando reducir el tiempo de implementación de nuevas funcionalidades en un 30%.</div>,
                   <div>Reducción del 70% de tiempos de respuesta de consultas SQL de datos masivos al refactorizar las queries y crear índices estratégicos.</div>
@@ -105,20 +112,20 @@ function App() {
                 logo: itnsLogo,
                 company: "ITNetworks México", 
                 description: <div>
-                  Durante esta etapa colaboré en el <strong>desarrollo de un ERP para una financiera</strong> llamada CreditFactor.
+                  Durante esta etapa colaboré en el <strong>desarrollo de un ERP para una prestigiosa financiera</strong> queretana.
                   Este sistema fue desarrollado con Laravel, PHP y SQL Server. Permite gestionar toda la lógica del negocio como clientes, empleados, créditos, pagos, entre otras.
                 </div>,
                 contributions: [
                   <div>
-                    Desarrollo del módulo de facturación electrónica ante el SAT utilizando la librería
+                    Colaboración en desarrollo del módulo de facturación electrónica ante el SAT utilizando la librería
                     <AnchorLink href="https://multifacturas.com"> Multifacturas</AnchorLink>.
                   </div>,
                   <div>
-                    Desarrollo del módulo de mensajería WhatsApp utlizando la librería
+                    Colaboración en desarrollo del módulo de mensajería WhatsApp utlizando la librería
                     <AnchorLink href="https://waapi.app"> WaAPI</AnchorLink>.
                   </div>
                 ],
-                tools: ["Laravel", "PHP", "JavaScript", "SQL Server", "Bootstrap", "HTML", "CSS"]
+                tools: ["Laravel", "PHP", "JavaScript", "SQL Server", "Bootstrap", "HTML", "CSS", "JQuery"]
               }
             ]}
           ></VerticalTimeline>
@@ -159,7 +166,7 @@ function App() {
                   Generación de componentes React escalables y reutilizables.
                 </div>,
                 <div>
-                  Desarrollo y diseño del API Gateway (Enrutamiendo, seguridad, usuarios).
+                  Participación en el <strong>desarrollo y diseño de todos los microservicios</strong> y, especialmente, en el <strong>API Gateway</strong> (Enrutamiendo, seguridad, usuarios).
                 </div>,
                 <div>
                   Autenticación y autorización en base a roles con JWT.
@@ -175,6 +182,53 @@ function App() {
               ],
             }
           ]} />
+        </div>
+        <HRTrimmed  className='bg-green-500 dark:bg-cyan-700 !mb-0'/>
+        <div>
+          <CoursesDisplay courses={[
+            {
+              title: "Fundamentos de Java",
+              provider: "TECNM",
+              date: "Enero 2026",
+              description: <div>Propedéutico introductorio a <strong>Java</strong> y a sus <strong>fundamentos como lenguaje</strong>. 
+                Es requisito para un curso posterior más avanzado.
+              </div>,
+              techs: ["Java", "POO"],
+              pdfUrl: fundamentosJava,
+            },
+            {
+              title: "Booster: Java Backend Senior",
+              provider: "Metaphorce",
+              date: "Noviembre 2025",
+              description: <div>Tópicos avanzados de desarrollo <strong>Java</strong>, <strong>DevOps</strong>, <strong>CI/CD</strong> y del <strong>stack de Spring</strong> (Spring Boot, Security, Data).</div>,
+              techs: ["Java", "Docker", "Kubernetes", "Docker Swarm", "JWT", "Spring Boot", "Eclipse IDE", "Jakarta EE", "Maven", "JPA", "Hibernate", "REST APIs", "Postman", "Swagger"],
+              pdfUrl: senior2025
+            },
+            {
+              title: "Fundamentos IA OCI (Oracle Cloud Infrastructure)",
+              provider: "Oracle",
+              date: "Septiembre 2025",
+              description: <div>Fundamentos de <strong>Inteligencia Artificial</strong> y derivados, así como la <strong>infraestructura de Oracle Cloud</strong>.</div>,
+              techs: ["Oracle Cloud", "Inteligencia Artifical", "Machine Learning", "Deep Learning", "Python", "Anaconda"],
+              badgeUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=6715D9556A7F5360C0FE29A03306263F0FD9E59B2AFCCF99927E96C54810600A",
+            },
+            {
+              title: "Booster: Java Backend Middle (Microservicios)",
+              provider: "Metaphorce",
+              date: "Julio 2024",
+              description: <div>Desarrollo enfocado en <strong>microservicios</strong> con Java y Spring Boot empleando <strong>Docker</strong> y <strong>Maven</strong>.</div>,
+              techs: ["Java", "Microservicios", "Spring Boot", "Docker", "Maven", "MySQL", "REST APIs", "JWT", "Postman", "JSON", "Swagger", "Mockito", "Jakarta EE", "JPA", "Hibernate"],
+              pdfUrl: middle2024
+            },
+            {
+              title: "Booster: Java Backend Jr-Mid y Habilidades Blandas",
+              provider: "Metaphorce",
+              date: "Noviembre 2023",
+              description: <div>Fundamentos de <strong>Spring Boot</strong> con Maven y <strong>creación de APIs</strong>. Además, incluía talleres de <strong>habilidades blandas.</strong></div>,
+              techs: ["Java", "Spring Boot", "Maven", "MySQL", "REST APIs", "JWT", "Postman", "JSON", "Swagger", "Jakarta EE", "JPA", "Hibernate", "Empatía", "Asertividad", "Liderazgo", "Trabajo en Equipo"],
+              pdfUrl: junior2023
+            }
+          ]}/>
         </div>
         <HRTrimmed  className='bg-green-500 dark:bg-cyan-700 !mb-0'/>
         <div>

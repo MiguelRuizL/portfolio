@@ -1,8 +1,9 @@
-import { Card, Badge } from "flowbite-react";
+import { Card, Tooltip } from "flowbite-react";
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { FaLinkedin, FaGithubSquare, FaArrowRight } from "react-icons/fa";
+import { FaLinkedin, FaGithubSquare, FaArrowRight, FaFilePdf, FaExternalLinkAlt, FaAward, FaCode , FaCircle} from "react-icons/fa";
 import { FaSquareYoutube } from "react-icons/fa6";
+import { HiOutlineAcademicCap, HiOutlineCalendar } from 'react-icons/hi';
 import { GenericBadge, StatusBadge } from "./Badges";
 import profilePic from "../assets/profile_picture.png";
 
@@ -136,7 +137,7 @@ function PortraitCard() {
   };
 
   return (
-    <Card className="w-full shadow-lg border-none overflow-hidden
+    <Card className="w-full h-full shadow-lg border-none overflow-hidden
       bg-linear-to-b from-white via-gray-100 to-gray-300/40 from-0% via-60% to-70%
       dark:bg-gray-900
       dark:bg-[linear-gradient(to_bottom,var(--color-green-900)_0%,transparent_25%),radial-gradient(ellipse_at_top_left,var(--color-green-900)_0%,transparent_50%),radial-gradient(ellipse_at_top_right,#16a34a99_0%,transparent_50%)]
@@ -227,7 +228,7 @@ function JSONProfileCard({ profileData = null}) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="w-full h-full max-w-2xl rounded-2xl border transition-all duration-300
+      className="w-full h-full rounded-2xl border transition-all duration-300
         bg-slate-50 dark:bg-slate-900 
         border-slate-200 dark:border-white/10 
         shadow-lg dark:shadow-2xl overflow-hidden"
@@ -235,9 +236,9 @@ function JSONProfileCard({ profileData = null}) {
       {/* Barra de título estilo Editor */}
       <div className="flex items-center justify-between px-4 py-3 bg-slate-200/50 dark:bg-white/5 border-b border-slate-200 dark:border-white/5">
         <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-400" />
-          <div className="w-3 h-3 rounded-full bg-yellow-400" />
-          <div className="w-3 h-3 rounded-full bg-green-400" />
+          <div className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500" />
+          <div className="w-3 h-3 rounded-full bg-yellow-400 hover:bg-yellow-500" />
+          <div className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-500" />
         </div>
         <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
           perfil_miguel.json
@@ -411,11 +412,131 @@ function ToolCard({ tool }) {
   );
 }
 
+function CertificateCard({course}) {
+  const { title, provider, description, techs, pdfUrl, badgeUrl, date } = course;
+  
+  // Lógica para limitar badges visibles
+  const visibleTechs = techs?.slice(0, 2) || [];
+  const remainingTechs = techs?.slice(2) || [];
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      className="group relative flex flex-col h-full p-6 rounded-2xl border border-gray-200 dark:border-gray-800 
+                 bg-white dark:bg-cyan-900/30 shadow-sm hover:shadow-xl transition-all duration-300"
+    >
+      <div className="absolute top-5 right-5 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all text-green-600 dark:text-green-400">
+        <FaAward size={40} />
+      </div>
+
+      <div className="flex-1">
+        <div className="flex flex-col sm:flex-row gap-1 mb-3">
+          <div className="flex items-center gap-2">
+            <HiOutlineAcademicCap className="text-green-600 dark:text-green-400" size={20} />
+            <span className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+              {provider}
+            </span>
+          </div>
+          <div className="justify-center items-center hidden sm:flex">
+            <FaCircle className="text-sky-400 dark:text-cyan-800 w-2 h-2" />
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 font-medium">
+            {date || "s.f."}
+          </div>
+        </div>
+
+        <h3 className="text-xl font-extrabold text-gray-900 dark:text-white leading-snug group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+          {title}
+        </h3>
+
+        <div className="text-sm mt-3 text-gray-600 dark:text-gray-400 line-clamp-5 leading-relaxed">
+          {description}
+        </div>
+        
+        <div className="flex flex-wrap gap-2 mt-5">
+          {visibleTechs.map((tech) => (
+            <span 
+              key={tech}
+              className="flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full 
+                         bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-100 dark:border-green-800"
+            >
+              <FaCode size={10} />
+              {tech}
+            </span>
+          ))}
+
+          {/* Tecnologías restantes */}
+          {remainingTechs.length > 0 && (
+            <Tooltip
+              content={
+                <div className="w-48 sm:w-64 p-2">
+                  <p className="text-[11px] font-bold border-b border-gray-400 dark:border-gray-600 mb-3 pb-1 text-green-700 dark:text-gray-300">
+                    Más Tecnologías:
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {remainingTechs.map((t) => (
+                      <span 
+                        key={t} 
+                        className="flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold rounded-full 
+                         bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-800"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              }
+              placement="top"
+              className="border shadow-xl bg-gray-100 dark:bg-slate-800 border-green-200 dark:border-gray-700"
+            >
+              <button className="flex items-center px-3 py-1 text-[11px] font-bold rounded-full 
+                                bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700
+                                hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors">
+                +{remainingTechs.length}
+              </button>
+            </Tooltip>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-8 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center">
+        {pdfUrl ? (
+          <a
+            href={pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors"
+          >
+            <FaFilePdf size={18} className="text-red-500" />
+            Consultar PDF
+          </a>
+        ) : badgeUrl ? (
+          <a
+            href={badgeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+          >
+            <FaExternalLinkAlt size={16} className="text-blue-500" />
+            Ver Insignia
+          </a>
+        ) : (
+          <div className="flex items-center gap-2 text-xs italic text-gray-400">
+            <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700" />
+            Conocimiento adquirido
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
 export { 
   BaseCard, 
   PortraitCard, 
   JSONProfileCard,
   ParagraphCard, 
   ProjectCard,
-  ToolCard
+  ToolCard,
+  CertificateCard
 };

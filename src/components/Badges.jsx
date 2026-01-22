@@ -23,7 +23,7 @@ function GenericBadge({ text, color }) {
             whileTap={{ scale: 0.9 }}
             className="cursor-pointer"
         >
-            <Badge className="px-3 py-1 rounded-full border bg-green-100 hover:bg-green-200 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 dark:hover:bg-sky-700 dark:text-sky-300 dark:hover:text-white text-sm font-bold transition-colors">
+            <Badge className="px-3 py-1 rounded-full border border-green-400/40 bg-green-100 hover:bg-green-200 text-green-800 dark:bg-sky-500/20 dark:border-sky-500/30 dark:hover:bg-sky-700 dark:text-sky-300 dark:hover:text-white text-sm font-bold transition-colors">
             {text}
             </Badge>
         </motion.div>
