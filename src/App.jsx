@@ -16,10 +16,6 @@ function App() {
   const { language } = useOutletContext();
   const t = Languages[language];
 
-  useEffect(() => {
-    console.log('CURRENT LANG', language);
-  },[])
-
   return (
     <>
       <div className="p-0 sm:p-7 w-full">

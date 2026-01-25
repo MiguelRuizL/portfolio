@@ -11,7 +11,10 @@ import middle2024 from '../assets/pdf/metaphorcemiddle_java.pdf';
 import junior2023 from '../assets/pdf/metaphorcejunior_java.pdf';
 
 export const Languages = {
-    spanish: {
+    es: { // spanish
+        header: {
+            portfolio: "Portafolio"
+        },
         footer: {
             madeWith: <>Hecho con <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span></>
         },
@@ -336,7 +339,10 @@ export const Languages = {
 
 
     
-    english: {
+    en: { // english
+        header: {
+            portfolio: "Portfolio"
+        },
         footer: {
             madeWith: <>Made with <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span></>
         },
@@ -651,7 +657,10 @@ export const Languages = {
 
 
 
-    french: {
+    fr: { // french
+        header: {
+            portfolio: "Portfolio"
+        },
         footer: {
             madeWith: <>Fait avec <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span></>
         },
@@ -967,7 +976,10 @@ export const Languages = {
 
 
 
-    german: {
+    de: { // german
+        header: {
+            portfolio: "Portfolio"
+        },
         footer: {
             madeWith: <>Erstellt mit <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span></>
         },
@@ -1281,7 +1293,10 @@ export const Languages = {
 
 
 
-    mandarin: {
+    zh: { // mandarin
+        header: {
+            portfolio: "作品集"
+        },
         footer: {
             madeWith: <>使用 <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span> 构建</>
         },

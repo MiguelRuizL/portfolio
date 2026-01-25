@@ -4,11 +4,13 @@ import { Navbar, NavbarBrand, NavbarToggle } from "flowbite-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggleButton from "./ui/ThemeToggleButton";
 import { LanguageButton } from "./ui/Buttons";
+import { Languages } from '../constants/languages';
 import { div } from "framer-motion/client";
 
 function LayoutNavbar({ currentLanguage, setLanguage }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const h = Languages[currentLanguage].header;
 
     const navRef = useRef(null);
 
@@ -20,8 +22,6 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
 
       const handleClickOutside = (event) => {
         if (navRef.current && !navRef.current.contains(event.target)) {
-          console.log('BUT FOR YOU');
-          
           setIsOpen(false);
         }
       };
@@ -37,12 +37,11 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
       };
     }, [isOpen]);
 
-    const switchLanguage = (language) => {
-      setLanguage(language);
-      console.log('nouvelle langue', language);
-      
+    useEffect(() => { // onChange de lenguage
+      setLanguage(currentLanguage);
       setIsOpen(false);
-    }
+      document.documentElement.lang = currentLanguage || "es";
+    }, [currentLanguage]);
 
     const navbarClasses = isScrolled
       ? "bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm"
@@ -60,11 +59,11 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
     const NavLinks = () => (
         <ul className="flex flex-col font-medium md:flex-row md:space-x-8">
           {[
-            { Icon: MX, label: "Español", language: "spanish" },
-            { Icon: US, label: "English", language: "english" },
-            { Icon: FR, label: "Français", language: "french"  },
-            { Icon: DE, label: "Deutsch", language: "german"  },
-            { Icon: CN, label: "普通话", language: "mandarin"  },
+            { Icon: MX, label: "Español", language: "es" },
+            { Icon: US, label: "English", language: "en" },
+            { Icon: FR, label: "Français", language: "fr"  },
+            { Icon: DE, label: "Deutsch", language: "de"  },
+            { Icon: CN, label: "普通话", language: "zh"  },
           ].map(({ Icon, label, language }) => {
             const classN = (language === currentLanguage) 
               ? "text-white bg-sky-700/80 rounded md:bg-transparent md:text-cyan-700 md:p-0 dark:text-white" 
@@ -72,7 +71,7 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
             return (
               <li key={label}>
                 <button 
-                  onClick={() => switchLanguage(language)}
+                  onClick={() => setLanguage(language)}
                   type="button" 
                   className={`w-full flex items-center gap-2 py-2 pl-3 pr-4 ${classN}`}>
                   <Icon className="w-5 h-5" /> <span>{label}</span>
@@ -87,7 +86,9 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
         <div ref={navRef} className="sticky top-0 z-50 transition-all duration-300 ">
         <Navbar fluid rounded className={`${navbarClasses}`}>
           <NavbarBrand href="/">
-              <span className="self-center whitespace-nowrap text-xl font-semibold text-green-600 dark:text-green-400">Portafolio</span>
+              <span className="self-center whitespace-nowrap text-xl font-semibold text-green-600 dark:text-green-400">
+                {h.portfolio}
+              </span>
           </NavbarBrand>
   
           {/* --- MENÚ PARA ESCRITORIO (Visible siempre en md+) --- */}

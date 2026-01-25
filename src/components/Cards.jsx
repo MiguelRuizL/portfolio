@@ -65,7 +65,7 @@ function BaseCard({ title = "", subtitle = "", children, className = "", topRigh
           <div className="flex flex-col">
             <motion.span 
               variants={titleVariants}
-              className="font-bold text-2xl text-green-500 dark:text-green-400"
+              className="font-bold text-2xl text-green-500 dark:text-green-400 break-words hyphens-auto"
             >
               {title}
             </motion.span>

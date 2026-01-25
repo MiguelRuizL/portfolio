@@ -3,8 +3,10 @@ import { LayoutNavbar } from "../components/Navbar";
 import LayoutFooter from "./Footer";
 import { useState } from "react";
 
+import { getBrowserLanguage } from "../utils/utilities";
+
 export default function AppLayout() {
-  const [language, setLanguage] = useState("spanish");
+  const [language, setLanguage] = useState(getBrowserLanguage());
 
   return (
     <div className='min-h-screen w-full bg-gray-100 dark:bg-gray-900'>
