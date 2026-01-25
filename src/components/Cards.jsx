@@ -90,7 +90,7 @@ function BaseCard({ title = "", subtitle = "", children, className = "", topRigh
   );
 }
 
-function PortraitCard() {
+function PortraitCard({ location }) {
   // Orquestación principal
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -163,7 +163,7 @@ function PortraitCard() {
           Miguel Ruiz
         </motion.h5>
         <motion.span variants={itemVariants} className="text-sm text-gray-500 dark:text-gray-400">
-          Guanajuato, México
+          {location}
         </motion.span>
 
         <motion.div 
@@ -194,7 +194,7 @@ function PortraitCard() {
   );
 }
 
-function JSONProfileCard({ profileData = null}) {
+function JSONProfileCard({ comment, profileData = null}) {
 
   const SyntaxHighlightedJson = ({ data, indent = 0 }) => {
     return Object.entries(data).map(([key, value], index) => {
@@ -241,14 +241,14 @@ function JSONProfileCard({ profileData = null}) {
           <div className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-500" />
         </div>
         <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-          perfil_miguel.json
+          profile_miguel.json
         </span>
       </div>
 
       {/* Contenido del JSON */}
       <div className="p-6 overflow-x-auto">
         <div className="text-slate-400 dark:text-slate-500 italic text-xs mb-4">
-          {"// datos del perfil"}
+          // {comment}
         </div>
         <div className="text-slate-800 dark:text-slate-300">
           <span className="text-gray-500">{"{"}</span>

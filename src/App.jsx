@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useOutletContext } from 'react-router-dom';
 import { HRTrimmed  } from 'flowbite-react';
 
 import { PortraitCard, JSONProfileCard, ParagraphCard } from './components/Cards'
@@ -8,10 +9,12 @@ import ProjectsDisplay from './components/ProjectsDisplay'
 import SkillsDisplay from './components/SkillsDisplay'
 import CoursesDisplay from './components/CoursesDisplay'
 
-
 import itsaleswebLanding from './assets/projects/itsalesweb-landing.png';
+import cfLanding from './assets/projects/cf-landing.png';
+import inventoryImage from './assets/projects/inventory-index.png';
 import itnsLogo from './assets/logos/itnetworks-logo.png';
 import toolsData from './constants/tools';
+import { Languages } from './constants/languages';
 import './App.css';
 
 import fundamentosJava from './assets/pdf/fundamentos_java.pdf';
@@ -19,7 +22,14 @@ import senior2025 from './assets/pdf/metaphorcesenior_java.pdf';
 import middle2024 from './assets/pdf/metaphorcemiddle_java.pdf';
 import junior2023 from './assets/pdf/metaphorcejunior_java.pdf';
 
+
 function App() {
+  const { language } = useOutletContext();
+  const t = Languages[language];
+
+  useEffect(() => {
+    console.log('CURRENT LANG', language);
+  },[])
 
   return (
     <>
@@ -27,52 +37,20 @@ function App() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           <div className="order-1 md:order-2">
-            <PortraitCard />
+            <PortraitCard 
+              location={t.portrait.location}
+            />
           </div>
 
           <div className="order-2 md:order-1 md:row-span-2 h-full">
-            <JSONProfileCard profileData={
-              {
-                "yo": {
-                  "nombre": "Miguel Ángel Ruiz López",
-                  "ocupacion": "Desarrollador Fullstack Jr.",
-                  "idiomas": ["Español", "Inglés", "Francés", "Alemán"]
-                },
-                "stack_resumen": {
-                  "lenguajes": ["PHP", "Java", "JavaScript"],
-                  "frontend": ["React", "Tailwind"],
-                  "backend": ["Node.js", "Spring Boot"],
-                  "fullstack": ["Laravel"],
-                  "bases_datos": ["SQL Server", "MySQL", "PostgreSQL"],
-                  "devops": ["Git", "Docker"],
-                  "otros": ["Microservicios", "JWT", "REST APIs"]
-                },
-                "experiencia": "1 año",
-                "intereses": {
-                  "videojuegos": ["Dota 2", "Warcraft", "The Legend of Zelda"],
-                  "edicion_videos": ["Sony Vegas Pro", "YouTube"],
-                  "deportes": ["Ciclismo"],
-                  "arte": "Dibujo"
-                }
-              }
-            }/>
+            <JSONProfileCard comment={t.comment} profileData={t.json}/>
           </div>
 
           <div className="order-3 md:order-3">
             <ParagraphCard 
-              title={"Miguel Ruiz"} 
-              subtitle={"Desarrollador de Software Junior"} 
-              content={[
-                <div key="bio">
-                  Desarrollador de software fullstack, <strong>especializado en aplicaciones web</strong> y en la <strong>administración de bases de datos</strong>. 
-                  Apasionado por la tecnología y el aprendizaje continuo; me esfuerzo por 
-                  estar en constante crecimiento profesional y personal.
-                </div>,
-                <p key="hobbies">
-                  Además, me encantan los idiomas y continuamente estoy reforzando mis habilidades en
-                  <strong> inglés</strong>, <strong>francés</strong> y <strong>alemán</strong>.
-                </p>,
-              ]}
+              title={t.bio.title} 
+              subtitle={t.bio.subtitle} 
+              content={t.bio.content}
               className='w-full h-full border-none overflow-hidden
               bg-linear-to-br from-white to-gray-200/60
               md:bg-linear-to-bl md:from-gray-200/90 md:to-white
@@ -180,7 +158,109 @@ function App() {
                 "JavaScript", "JWT", "Microservicios", "SQL Server", "Git",
                 "Flowbite", "Prisma", "Postman", "JSON"
               ],
-            }
+            },
+            {
+              "image": cfLanding,
+              "title": "ERP Financiera",
+              "status": "Finalizado",
+              "color": "blue",
+              "summary": 
+                <div className='flex flex-col gap-2 text-justify'>
+                  <div>
+                    ERP web desarrollado para una empresa de <strong>servicios financieros</strong>. Este proyecto surgió con el objetivo de
+                    modernizar y automatizar la gestión empresarial del cliente.
+                  </div>
+                  <div>
+                    Desarrollado con Laravel, PHP y SQL Server, el proyecto incluye módulos críticos de facturación electrónica y modelos de amortización, encontrándose actualmente en producción y uso diario
+                  </div>
+                </div>,
+              "description": 
+                <div className='flex flex-col gap-3'>
+                  <div>
+                    El sistema transformó procesos que antes hacían a mano, máquina de escribir o Excel
+                    en procesos automatizados y confiables dentro de una aplicación web optimizada.
+                  </div>
+                  <div>
+                    Además de permitir gestionar la lógica de negocio principal como el <strong>manejo de créditos</strong>, <strong>pagos</strong> y <strong>moratorias</strong>, 
+                    también permite a los usuarios administrar clientes, empleados, roles y permisos, entre otros. 
+                  </div>
+                  <div>
+                    Este proyecto estaba en su etapa inicial cuando me uní al equipo como practicante y fue hasta que terminé mi pasantía que finalizó su desarrollo.
+                    Actualmente el equipo, incluyéndome, da mantenimiento y soporte al sistema.
+                  </div>
+                </div>,
+              "contributions": [
+                <div>
+                  Participé en el desarrollo del módulo de <strong>generación y timbrado de facturas electrónicas</strong> ante el SAT.
+                </div>,
+                <div>
+                  Colaboré en el desarrollo del <strong>módulo de mensajería</strong> vía <strong>WhatsApp</strong> para mensajes automatizados.
+                </div>,
+                <div>
+                  Implementación de cálculos de <strong>tablas de amortización</strong> personalizadas según las necesidades del cliente.
+                </div>,
+                <div>
+                  Automatización del cálculo de intereses moratorios y generación de reportes financieros.
+                </div>,
+                <div>
+                  Desarrollo fullstack del sistema en general.
+                </div>
+              ],
+              "tools": [
+                "Laravel", "PHP", "SQL Server", "Bootstrap", 
+                "JavaScript", "JQuery", "HTML", "CSS", "GitLab",
+                "Finanzas", "Tablas de Amortización"
+              ],
+            },
+            {
+              "image": inventoryImage,
+              "title": "Gestión Inventarios",
+              "status": "En Proceso",
+              "color": "purple",
+              "summary": 
+                <div className='flex flex-col gap-2 text-justify'>
+                  <div>
+                    Sistema de gestión de inventarios para un negocio local en Guanajuato. El propósito es permitirle a los dueños
+                    <strong> administrar las entradas y salidas de productos</strong> en su tienda de artículos misceláneos. Cuenta además con bitácoras de movimientos.
+                  </div>
+                  <div>
+                    El proyecto está en desarrollo desde noviembre del 2025 y cuenta con una versión de código abierto que puede ser
+                    visualizada en <AnchorLink href={"https://github.com/MiguelRuizL/warehouse-miguel-frontend"}>mi GitHub</AnchorLink>.
+                  </div>
+                </div>,
+              "description": 
+                <div className='flex flex-col gap-3'>
+                  <div>
+                    El sistema tiene como objetivo cubrir la <strong>necesidad de administrar</strong> y <strong>visualizar</strong> con mayor detalle <strong>el inventario</strong> del local, pues los dueños
+                    reciéntemente han estado notando inconsistencias con las ganancias del negocio y la cantidad de artículos vendidos.
+                  </div>
+                  <div>
+                    Actualmente el sistema sigue en desarrollo, sin embargo, <strong>desde enero del 2026 ya opera</strong> en un entorno real en fase beta.
+                  </div>
+                  <div>
+                    El proyecto implementa una arquitectura desacoplada con un <strong>Backend en Java</strong> (<strong>Spring Boot</strong>) y un <strong>Frontend en React</strong>.
+                  </div>
+                </div>,
+              "contributions": [
+                <div>
+                  Desarrollo fullstack del sistema en dos aplicaciones: frontend y backend.
+                </div>,
+                <div>
+                  Autenticación y autorización con <strong>Spring Security</strong> y <strong>JWT</strong> en base a roles y permisos.
+                </div>,
+                <div>
+                  Desarrollo del módulo de bitácora que permite filtrar movimientos por empleado, fechas y actividad.
+                </div>,
+                <div>
+                  Uso de componentes React reutilizables y escalables.
+                </div>,
+              ],
+              "tools": [
+                "React", "Spring Boot", "Java", "JavaScript", 
+                "Tailwind", "Spring Security", "SQL Server", "JWT", "Maven", "Git",
+                "GitHub", "Flowbite", "Postman", "REST APIs", "JSON"
+              ],
+            },
           ]} />
         </div>
         <HRTrimmed  className='bg-green-500 dark:bg-cyan-700 !mb-0'/>
