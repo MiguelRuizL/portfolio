@@ -1,4 +1,4 @@
-Este es mi portafolio personal, diseñado para mostrar mis habilidades y proyectos de desarrollo web actuales.
+Este es mi portafolio personal, diseñado para mostrar mis habilidades y proyectos de desarrollo web actuales. Está disponible en 5 idiomas diferentes.
 
 ## Tecnologías Utilizadas
 
@@ -18,5 +18,4 @@ Este es mi portafolio personal, diseñado para mostrar mis habilidades y proyect
 Desarrollado con enfoque en rendimiento y diseño moderno.
 
 ###### Notas
-- Proximamente añadiré vista en inglés y posiblemente otros idiomas.
 - El proyecto es puramente frontend, sin embargo, se está trabajando para implementar backend y base de datos.
