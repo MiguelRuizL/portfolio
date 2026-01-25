@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { CertificateCard, BaseCard } from './Cards';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-export default function CoursesDisplay({ courses = [] }) {
+export default function CoursesDisplay({ labels, courses = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
 
@@ -57,8 +57,8 @@ export default function CoursesDisplay({ courses = [] }) {
   return (
     <div className="w-full">
       <BaseCard 
-        title="Cursos y Certificaciones" 
-        subtitle='Conocimientos adquiridos a través de cursos y boosters' 
+        title={labels.title}
+        subtitle={labels.subtitle} 
         className="bg-transparent shadow-none dark:bg-gray-900"
       >
         <div className="relative group/container px-0 md:px-4">
@@ -93,7 +93,7 @@ export default function CoursesDisplay({ courses = [] }) {
                     opacity: activeIndex === index ? 1 : 0.6
                 }}
               >
-                <CertificateCard course={course} />
+                <CertificateCard labels={labels} course={course} />
               </div>
             ))}
           </div>

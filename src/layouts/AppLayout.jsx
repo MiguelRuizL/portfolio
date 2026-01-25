@@ -13,7 +13,7 @@ export default function AppLayout() {
       <main className="p-4">
         <Outlet context={{ language }}/>
       </main>
-      <LayoutFooter />
+      <LayoutFooter currentLanguage={language}/>
     </div>
   );
 }

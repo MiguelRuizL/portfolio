@@ -1,8 +1,21 @@
-import { FaPhp, FaLaravel, FaReact, FaNodeJs, FaJava, FaDocker, FaBootstrap, FaHtml5, FaCss3Alt, FaFigma  } from "react-icons/fa6";
-import { SiExpress, SiJavascript, SiSpringboot, SiMysql, SiTailwindcss, SiDart, SiFlutter, SiIntellijidea, SiSpring, SiPostman  } from "react-icons/si";
+import { FaPhp, FaLaravel, FaReact, FaNodeJs, FaDocker, FaBootstrap } from "react-icons/fa6";
+import { SiExpress, SiSpringboot, SiMysql, SiTailwindcss } from "react-icons/si";
 import { DiMsqlServer } from "react-icons/di";
-import { BiLogoVisualStudio, BiLogoPostgresql  } from "react-icons/bi";
-import { TbBrandCSharp } from "react-icons/tb";
+import { BiLogoPostgresql  } from "react-icons/bi";
+
+import spring from "../../public/spring.svg"
+import vite from "../assets/logos/vite.svg";
+import java from "../assets/logos/java.svg"
+import csharp from "../assets/logos/csharp.svg"
+import css3 from "../assets/logos/css3.svg"
+import dart from "../assets/logos/dart.svg"
+import figma from "../assets/logos/figma.svg"
+import flutter from "../assets/logos/flutter.svg"
+import html5 from "../assets/logos/html5.svg"
+import intellij from "../assets/logos/intellij.svg"
+import javascript from "../assets/logos/javascript.svg"
+import postman from "../assets/logos/postman.svg"
+import vscode from "../assets/logos/vscode.svg"
 
 const baseSize = "w-10 h-10";
 
@@ -30,7 +43,7 @@ export const toolsData = [
   },
   {
     name: "JavaScript",
-    icon: <SiJavascript className={`${baseSize} bg-gray-900 text-[#F7DF1E]`} />
+    icon: <img src={javascript} alt="" className={baseSize} />
   },
   {
     name: "SQL Server",
@@ -42,11 +55,11 @@ export const toolsData = [
   },
   {
     name: "Java",
-    icon: <FaJava className={`${baseSize} text-[#5382a1]`} />
+    icon: <img src={java} alt="" className={baseSize} />
   },
   {
     name: "Spring",
-    icon: <SiSpring className={`${baseSize} text-[#6DB33F]`}/>
+    icon: <img src={spring} alt="" className={baseSize} />
   },
   {
     name: "Spring Boot",
@@ -70,19 +83,23 @@ export const toolsData = [
   },
   {
     name: "HTML",
-    icon: <FaHtml5 className={`${baseSize} text-[#E34F26]`} />
+    icon: <img src={html5} alt="" className={baseSize} />
   },
   {
     name: "CSS",
-    icon: <FaCss3Alt className={`${baseSize} text-[#1572B6]`} />
+    icon: <img src={css3} alt="" className={baseSize} />
+  },
+  {
+    name: "Vite",
+    icon: <img src={vite} alt="" />
   },
   {
     name: "Postman",
-    icon: <SiPostman className={`${baseSize} text-[#EF5B25]`} />
+    icon: <img src={postman} alt="" className={baseSize} />
   },
   {
     name: "C#",
-    icon: <TbBrandCSharp className={`${baseSize} text-[#512BD4]`} />
+    icon: <img src={csharp} alt="" className={baseSize} />
   },
   {
     name: "GitHub",
@@ -92,23 +109,23 @@ export const toolsData = [
   },
   {
     name: "Dart",
-    icon: <SiDart className={`${baseSize} text-[#0175C2]`} />
+    icon: <img src={dart} alt="" className={baseSize} />
   },
   {
     name: "Flutter",
-    icon: <SiFlutter className={`${baseSize} text-[#027DFD]`} />
+    icon: <img src={flutter} alt="" className={baseSize} />
   },
   {
     name: "Figma",
-    icon: <FaFigma className={`${baseSize} text-[#F24E1E] dark:text-[#A259FF]`} />
+    icon: <img src={figma} alt="" className={baseSize} />
   },
   {
     name: "IntelliJ",
-    icon: <SiIntellijidea className={`${baseSize} text-[#FA275A]`} />
+    icon: <img src={intellij} alt="" className={baseSize} />
   },
   {
     name: "Visual Studio Code",
-    icon: <BiLogoVisualStudio className={`${baseSize} text-[#007ACC]`} />
+    icon: <img src={vscode} alt="" className={baseSize} />
   }
 ];
 

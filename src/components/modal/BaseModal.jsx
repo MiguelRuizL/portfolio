@@ -2,7 +2,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-rea
 import { motion, AnimatePresence } from "framer-motion";
 import { customModalTheme } from "../../themes/themes.js";
 
-export default function BaseModal({ openModal = false, setOpenModal, children, title = "Detalles" }) {
+export default function BaseModal({ labels, openModal = false, setOpenModal, children, title = "Detalles" }) {
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.9, y: -20 },
@@ -43,7 +43,7 @@ export default function BaseModal({ openModal = false, setOpenModal, children, t
             </ModalBody>
             <ModalFooter className="flex justify-end">
               <Button color="gray" onClick={() => setOpenModal(false)}>
-                Cerrar
+                {labels.close}
               </Button>
             </ModalFooter>
           </motion.div>

@@ -2,7 +2,7 @@ import { SimpleBadge, StatusBadge } from "../Badges";
 import BaseModal from "./BaseModal";
 import { motion } from "framer-motion";
 
-export default function ProjectModal({ openModal = false, setOpenModal, project }) {
+export default function ProjectModal({ labels, openModal = false, setOpenModal, project }) {
     if (!project) return null;
 
     return (
@@ -10,6 +10,7 @@ export default function ProjectModal({ openModal = false, setOpenModal, project 
             openModal={openModal} 
             setOpenModal={setOpenModal}
             title={project.title}
+            labels={labels}
         >
             <div className="flex flex-col gap-8">
                 
@@ -27,7 +28,7 @@ export default function ProjectModal({ openModal = false, setOpenModal, project 
                 <div className="flex flex-col gap-5 md:col-span-12 order-1 md:order-2">
                     <div>
                         <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-green-500 mb-4">
-                            Sobre el Proyecto
+                            {labels.about}
                         </h4>
                         <div className="text-gray-600 dark:text-gray-200 leading-7 text-justify space-y-4">
                             {project.description}
@@ -36,7 +37,7 @@ export default function ProjectModal({ openModal = false, setOpenModal, project 
 
                     <div className="p-4 rounded-xl bg-green-500/5 border border-green-500/20">
                         <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-green-500 mb-3">
-                            Mis Aportaciones:
+                            {labels.contributions}:
                         </h4>
                         <div className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed italic">
                             <ul className="">
@@ -54,7 +55,7 @@ export default function ProjectModal({ openModal = false, setOpenModal, project 
 
                     <div>
                         <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-green-500 mb-3">
-                            Stack Tecnológico
+                            {labels.stack}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                             {project.tools?.map((tool, i) => {

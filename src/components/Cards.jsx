@@ -290,7 +290,7 @@ function ParagraphCard({ title, subtitle, content, className = "" }) {
   );
 }
 
-function ProjectCard({project, className = "", setSelectedData}) {
+function ProjectCard({ labels, project, className = "", setSelectedData}) {
   return (
     <BaseCard 
       title={project.title}
@@ -338,7 +338,7 @@ function ProjectCard({project, className = "", setSelectedData}) {
           }}
           className="flex items-center justify-end gap-1 text-sm font-medium text-green-600 dark:text-green-400 hover:underline"
         >
-          Ver detalles <FaArrowRight />
+          {labels.details} <FaArrowRight />
         </button>
       </motion.div>
     </BaseCard>
@@ -412,7 +412,7 @@ function ToolCard({ tool }) {
   );
 }
 
-function CertificateCard({course}) {
+function CertificateCard({ labels, course }) {
   const { title, provider, description, techs, pdfUrl, badgeUrl, date } = course;
   
   // Lógica para limitar badges visibles
@@ -471,7 +471,7 @@ function CertificateCard({course}) {
               content={
                 <div className="w-48 sm:w-64 p-2">
                   <p className="text-[11px] font-bold border-b border-gray-400 dark:border-gray-600 mb-3 pb-1 text-green-700 dark:text-gray-300">
-                    Más Tecnologías:
+                    {labels.more_technologies}:
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {remainingTechs.map((t) => (
@@ -508,7 +508,7 @@ function CertificateCard({course}) {
             className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-red-600 dark:text-gray-300 dark:hover:text-red-400 transition-colors"
           >
             <FaFilePdf size={18} className="text-red-500" />
-            Consultar PDF
+            {labels.pdf}
           </a>
         ) : badgeUrl ? (
           <a
@@ -518,12 +518,12 @@ function CertificateCard({course}) {
             className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
           >
             <FaExternalLinkAlt size={16} className="text-blue-500" />
-            Ver Insignia
+            {labels.badge}
           </a>
         ) : (
           <div className="flex items-center gap-2 text-xs italic text-gray-400">
             <div className="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700" />
-            Conocimiento adquirido
+            {labels.knowledge_accquired}
           </div>
         )}
       </div>

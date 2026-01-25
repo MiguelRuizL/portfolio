@@ -20,6 +20,8 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
 
       const handleClickOutside = (event) => {
         if (navRef.current && !navRef.current.contains(event.target)) {
+          console.log('BUT FOR YOU');
+          
           setIsOpen(false);
         }
       };
@@ -37,6 +39,8 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
 
     const switchLanguage = (language) => {
       setLanguage(language);
+      console.log('nouvelle langue', language);
+      
       setIsOpen(false);
     }
 
@@ -80,8 +84,8 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
     );
 
     return (
-        <div  className="sticky top-0 z-50 transition-all duration-300 ">
-        <Navbar ref={navRef} fluid rounded className={`${navbarClasses}`}>
+        <div ref={navRef} className="sticky top-0 z-50 transition-all duration-300 ">
+        <Navbar fluid rounded className={`${navbarClasses}`}>
           <NavbarBrand href="/">
               <span className="self-center whitespace-nowrap text-xl font-semibold text-green-600 dark:text-green-400">Portafolio</span>
           </NavbarBrand>

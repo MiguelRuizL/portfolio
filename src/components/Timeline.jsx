@@ -13,7 +13,7 @@ import { BaseCard } from "./Cards";
 import { GenericBadge } from "./Badges";
 import { motion } from "framer-motion";
 
-function VerticalTimeline({ timelineData = [] }) {
+function VerticalTimeline({ labels, timelineData = [] }) {
     const timelineItemVariants = {
         hidden: { opacity: 0, x: -30 },
         visible: {
@@ -39,8 +39,8 @@ function VerticalTimeline({ timelineData = [] }) {
     
     return (
         <BaseCard
-            title="Experiencia Laboral"
-            subtitle="Trayectoria profesional"
+            title={labels.title}
+            subtitle={labels.subtitle}
             className="bg-linear-to-r from-white to-gray-100 dark:from-green-900/60 dark:to-gray-900"
         >
         <div className="m-5">
@@ -103,7 +103,7 @@ function VerticalTimeline({ timelineData = [] }) {
 
                         <motion.div variants={childVariants}>
                             <span className="font-bold text-green-600 dark:text-green-400">
-                            Aportaciones destacadas:
+                            {labels.contributions}:
                             </span>
                             <ul className="space-y-2 mt-2">
                             {item.contributions && item.contributions.map((contribution, cIndex) => (

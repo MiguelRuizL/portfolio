@@ -1,7 +1,9 @@
 import { FaCircle } from "react-icons/fa";
+import { Languages } from '../constants/languages';
 
-export default function LayoutFooter() {
+export default function LayoutFooter({ currentLanguage }) {
   const currentYear = new Date().getFullYear();
+  const f = Languages[currentLanguage].footer;
 
   return (
     <footer className="w-full py-6 mt-auto border-t border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900 transition-colors duration-300">
@@ -15,7 +17,7 @@ export default function LayoutFooter() {
             <FaCircle className="text-sky-400 dark:text-cyan-800 w-2 h-2" />
           </div>
           <div className="text-slate-500 dark:text-slate-400 italic">
-            Hecho con <span className="text-cyan-500 dark:text-cyan-400">React & TailwindCSS</span>
+            {f.madeWith}
           </div>
         </div>
         
