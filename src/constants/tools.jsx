@@ -1,5 +1,5 @@
-import { FaPhp, FaLaravel, FaReact, FaNodeJs, FaDocker, FaBootstrap } from "react-icons/fa6";
-import { SiExpress, SiSpringboot, SiMysql, SiTailwindcss } from "react-icons/si";
+import { FaPhp, FaLaravel, FaReact, FaNodeJs, FaDocker } from "react-icons/fa6";
+import { SiExpress, SiSpringboot, SiMysql, SiTailwindcss, SiJquery  } from "react-icons/si";
 import { DiMsqlServer } from "react-icons/di";
 import { BiLogoPostgresql  } from "react-icons/bi";
 
@@ -16,6 +16,7 @@ import intellij from "../assets/logos/intellij.svg"
 import javascript from "../assets/logos/javascript.svg"
 import postman from "../assets/logos/postman.svg"
 import vscode from "../assets/logos/vscode.svg"
+import boostrap from "../assets/logos/bootstrap.svg"
 
 const baseSize = "w-10 h-10";
 
@@ -79,7 +80,7 @@ export const toolsData = [
   },
   {
     name: "Bootstrap",
-    icon: <FaBootstrap className={`${baseSize} text-[#7952B3]`} />
+    icon: <img src={boostrap} alt="" className="w-10 h-8"/>
   },
   {
     name: "HTML",
@@ -92,6 +93,10 @@ export const toolsData = [
   {
     name: "Vite",
     icon: <img src={vite} alt="" />
+  },
+  {
+    name: "JQuery",
+    icon: <SiJquery className={`${baseSize} text-[#0769AD]`} />
   },
   {
     name: "Postman",

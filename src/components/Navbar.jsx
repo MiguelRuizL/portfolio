@@ -63,7 +63,7 @@ function LayoutNavbar({ currentLanguage, setLanguage }) {
             { Icon: US, label: "English", language: "en" },
             { Icon: FR, label: "Français", language: "fr"  },
             { Icon: DE, label: "Deutsch", language: "de"  },
-            { Icon: CN, label: "普通话", language: "zh"  },
+            { Icon: CN, label: "中文", language: "zh"  },
           ].map(({ Icon, label, language }) => {
             const classN = (language === currentLanguage) 
               ? "text-white bg-sky-700/80 rounded md:bg-transparent md:text-cyan-700 md:p-0 dark:text-white" 
